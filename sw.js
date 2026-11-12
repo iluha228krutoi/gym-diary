@@ -3,7 +3,7 @@
 // При каждом обновлении приложения меняй CACHE_VERSION (и APP_VERSION в js/version.js):
 // телефон скачает новые файлы, а пользователь увидит «Доступна новая версия».
 
-const CACHE_VERSION = 'v0.4.0';
+const CACHE_VERSION = 'v0.4.1';
 const CACHE = `gymapp-${CACHE_VERSION}`;
 
 const FILES = [

@@ -135,9 +135,12 @@ function registerServiceWorker() {
     });
   }).catch((e) => console.warn('Service worker не зарегистрирован', e));
 
+  // Перезагружаемся только при обновлении версии. При самой первой установке service worker
+  // тоже «меняет контроллер» — перезагрузка тогда не нужна и сбила бы то, что человек делает.
+  const hadController = !!navigator.serviceWorker.controller;
   let reloading = false;
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (reloading) return;
+    if (reloading || !hadController) return;
     reloading = true;
     location.reload();
   });
